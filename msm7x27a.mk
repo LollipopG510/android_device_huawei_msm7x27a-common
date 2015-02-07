@@ -139,11 +139,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.hwc.fakevsync=1 \
     ro.max.fling_velocity=4000 \
     ro.opengles.version=131072 \
-    ro.sf.lcd_density=200 \
-    persist.sys.force_highendgfx=true
+    ro.sf.lcd_density=240 \
+    #persist.sys.force_highendgfx=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=48m \
+    dalvik.vm.heapgrowthlimit=52m \
     dalvik.vm.heapsize=128m \
     ro.config.low_ram=true
 
@@ -169,8 +169,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.gapless.playback.disable=true \
-    ro.sys.fw.bg_apps_limit=16 \
-    ro.config.max_starting_bg=8
 
 # Stagefright
 PRODUCT_PROPERTY_OVERRIDES += \
