@@ -58,7 +58,6 @@ ARCH_ARM_HIGH_OPTIMIZATION := true
 ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
 TARGET_GRALLOC_USES_ASHMEM := true
 
-
 BOARD_WANTS_EMMC_BOOT := true
 
 # Compiler flags
@@ -90,6 +89,9 @@ HWUI_COMPILE_FOR_PERF := true
 # Hardware
 BOARD_HARDWARE_CLASS := device/huawei/msm7x27a-common/cmhw
 
+# Use dlmalloc
+MALLOC_IMPL := dlmalloc
+
 # Kernel
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=huawei androidboot.selinux=permissive
@@ -103,6 +105,9 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
+# Force the screenshot path to CPU consumer
+COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x800000
@@ -137,13 +142,7 @@ TARGET_CUSTOM_WIFI := ../../device/huawei/msm7x27a-common/libhardware_legacy/wif
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Enable dex-preoptimization to speed up first boot sequence
-ifeq ($(HOST_OS),linux)
-  ifeq ($(TARGET_BUILD_VARIANT),user)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
+WITH_DEXPREOPT := true
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
